@@ -1,2 +1,2 @@
-# cody_client_c
-cody client components
+# cody_server_c
+cody server components
