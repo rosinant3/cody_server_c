@@ -3,9 +3,9 @@ import { ISelectService } from './selectInterface';
 import selectModel from '../model/select/selectModel';
 import { firstValueFrom } from 'rxjs';
 
-const createService:ISelectService = Object.create(baseService);
+const selectService:ISelectService = Object.create(baseService);
 
-createService.schema = {
+selectService.schema = {
     type: "object",
     properties: {
       case_: {type: "number" },
@@ -17,13 +17,13 @@ createService.schema = {
     additionalProperties: false
 };
 
-createService.validate = async function (params) {
+selectService.validate = async function (params) {
     const valid = await this.ajv.validate(this.schema, params);
     if (!valid) throw new Error(JSON.stringify(this.ajv.errors));
     return params;
 };
 
-createService.execute = async function (params) {
+selectService.execute = async function (params) {
   let pageCount: number | null = null;
   if (params.currentPage == 1) {
     const count = await firstValueFrom(selectModel.count(params.case_));
@@ -36,4 +36,4 @@ createService.execute = async function (params) {
   };
 };
 
-export default createService;
+export default selectService;
