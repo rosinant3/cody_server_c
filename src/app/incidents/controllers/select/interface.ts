@@ -1,4 +1,4 @@
-import { ISelectParams } from '../../service/select/selectInterface';
+import { ISelectParams } from '../../service/select/interface';
 import { TExpressFunction } from '../../interface';
 
 export interface ISelectRequest {

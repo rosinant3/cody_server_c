@@ -1,5 +1,3 @@
-
-
 export default {
-    create: 'INSERT INTO incident SET ?'
-};
+    create: 'INSERT INTO incidents SET ?'
+}; 

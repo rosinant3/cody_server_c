@@ -1,4 +1,4 @@
-import { ISelectParams } from '../../service/select/selectInterface';
+import { ISelectParams } from '../../service/select/interface';
 import selectService from '../../service/select/selectService';
 import { ISelectControllers } from './interface';
 
@@ -11,17 +11,16 @@ const controllers:ISelectControllers = {
         const service:ISelectParams = Object.create(selectService);
               service.params = params;
               service.context = context;
-        const promise = await service.run().
+        const data = await service.run().
                         catch((error:Error)=>{
                             next(error.message);
                         });
-        
-        next();
 
+        req.data = data;
+        next();
     },
     response: function (req, res, next) {
-
-        res.send('here the response');
+        res.send(req.data);
     }
 };
 

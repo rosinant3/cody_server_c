@@ -6,7 +6,7 @@ import sql from './sql';
 
 const selectModel:ISelectModel = Object.create(dbService);
 
-selectModel.select = function (params) {
+selectModel.query = function (params) {
     return new Observable(observer => { 
         this.con.query(sql.select, [ params.case_, params.hook, params.perPage ], 
             function (error:MysqlError, results:ICountResults[], fields:FieldInfo[]) {

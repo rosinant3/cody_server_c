@@ -7,3 +7,13 @@ export interface IRoutes {
 export interface IdbService {
     con: typeof mysql;
 }
+
+
+export type props = { 
+    type: string;
+    minLength?: number;
+    maxLength?: number;
+    maxItems?: number; 
+    minItems?: number; 
+    items?: any;
+};

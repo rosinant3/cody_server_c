@@ -1,4 +1,4 @@
-import { ICreateParams } from '../../service/create/createInterface';
+import { ICreateParams } from '../../service/create/interface';
 import { TExpressFunction } from '../../interface';
 
 export interface ICreateRequest {

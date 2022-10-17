@@ -1,5 +1,5 @@
 import createService from '../../service/create/createService';
-import { ICreateParams } from '../../service/create/createInterface';
+import { ICreateParamsService } from '../../service/create/interface';
 import { ICreateControllers } from './interface';
 
 const controllers:ICreateControllers = {
@@ -7,19 +7,18 @@ const controllers:ICreateControllers = {
     
         const context = req.session.context;
         const params = req.body;
-        const service:ICreateParams = Object.create(createService);
-              service.params = params;
+        const service:ICreateParamsService = Object.create(createService);
+              service.params = params; 
               service.context = context;
-        const results = await service.run().
+        const data = await service.run().
                         catch((error:Error)=>{
                             next(error.message);
                         });
-        
-        next(results);
+        req.data = data;
+        next();
     },
     response: function (req, res, next) {
-
-        res.send('here the response');
+        res.send(req.data);
     }
 };
 
@@ -27,4 +26,5 @@ const createControllers = [
     controllers.create,
     controllers.response
 ];
+
 export default createControllers;

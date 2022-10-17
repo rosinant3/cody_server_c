@@ -8,8 +8,10 @@ const jsonErrorHandler = (error:any, req:any, res:any, next:any) => {
     res.status(500).json({ error });
 };
 parsers.initialize = function () {
+    
     this.app.use(cookieParser());
     this.app.use(bodyParser.urlencoded({ extended: false }));
+    this.app.use(bodyParser.json());
 };
 parsers.errorHandlerInit = function () {
     this.app.use(jsonErrorHandler);

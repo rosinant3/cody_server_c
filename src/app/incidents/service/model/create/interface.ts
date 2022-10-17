@@ -1,12 +1,12 @@
 import { IdbService } from '../../../../interface';
-import { ICreateParams } from '../../create/createInterface';
+import { IIncidentParams } from '../../create/interface';
 import { Observable } from 'rxjs';
 import { FieldInfo } from 'mysql';
 
-export interface ICreateModel extends IdbService {
-    create: (params: ICreateParams) => Observable<{results?: Object[], fields?: FieldInfo[]}>;
+export interface IInsertResults {
+    insertId: number;
 };
 
-export interface IInsertResults {
-
+export interface ICreateModel extends IdbService {
+    query: (params: IIncidentParams) => Observable<{insertId: number, fields?: FieldInfo[]}>;
 };
