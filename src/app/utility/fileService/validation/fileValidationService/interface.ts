@@ -1,7 +1,6 @@
 import {
 
     IFile,
-    IFileObj,
     IBaseFileSrvice,
     IFileObject,
     ISchema,
@@ -12,7 +11,7 @@ import {
 import { props } from '../../../../interface';
 
 export interface IInfoObjectProps {
-    id: props;
+    parentId: props;
     type: props;
     allowedFiles: props;
     allowedFileTypes: props;
@@ -29,8 +28,8 @@ export interface IInfoSchema extends ISchema {
 export interface IFileValidationService extends IBaseFileSrvice {
     allowedFiles: string[]; 
     allowedFileTypes: string[];
-    validate: (files: IFileObj[], info:IFileInfoObject) => Promise<IFileObject>;
-    selectFile: (files: IFileObj[]) => Promise<IFile>;
+    validate: (files: IFile[], info:IFileInfoObject) => Promise<IFileObject>;
+    selectFile: (files: IFile[]) => Promise<IFile>;
     validateFileExtension: (file: IFile, info: IFileInfoObject) => Promise<boolean>;
  
     schemas: {

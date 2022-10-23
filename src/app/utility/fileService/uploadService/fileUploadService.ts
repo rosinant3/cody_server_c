@@ -10,12 +10,12 @@ const fileUploadService:IFileUploadService = Object.create(fileUploadValidationS
 fileUploadService.execute = async function(fileObject) {
    
     const busboy = fileObject.info.busboy;
-    const rawBody = fileObject.info.rawBody;
+    const filePath = fileObject.info.fileId;
     const service:IBusboyService = Object.create(busboyService);
           service.busboy = busboy;
           service.fileObject = fileObject; 
           
-    const busObserver = await firstValueFrom(service.observeBusboy(rawBody))
+    const busObserver = await firstValueFrom(service.observeBusboy(filePath))
                             .catch((e:string)=>{
                                 throw new Error(e);
                             });

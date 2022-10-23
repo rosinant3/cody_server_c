@@ -12,14 +12,18 @@ export interface ISelectParams {
     hook: string;
     perPage: number;
     currentPage: number;
-    case_: number;
+    incident: number;
+    uploaded: number;
+    mimetype: string;
 };
 
 export interface ISelectDataProps {
     hook: props;
     perPage: props;
     currentPage: props;
-    case_: props;
+    incident: props;
+    uploaded: props;
+    mimetype: props;
 };
 
 interface ISchema {

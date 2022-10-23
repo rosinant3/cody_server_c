@@ -9,5 +9,5 @@ export interface ICountResults {
 
 export interface ISelectModel extends IdbService {
     query: (params: ISelectParams) => Observable<{results?: Object[], fields?: FieldInfo[]}>;
-    count: (case_:number) => Observable<{results?: ICountResults[], fields?: FieldInfo[]}>;
+    count: (params: { incident: number; type: string; }) => Observable<{results?: ICountResults[], fields?: FieldInfo[]}>;
 };

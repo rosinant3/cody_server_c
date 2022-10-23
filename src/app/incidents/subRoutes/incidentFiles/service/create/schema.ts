@@ -3,9 +3,11 @@ import { ISchema } from './interface';
 const schema:ISchema = {
     type: "object",
     properties: {
-      name: { type: "string", minLength: 1 },
+      url: { type: "string", minLength: 1, maxLength: 4000 },
+      incident: { type: "number" },
+      mimetype: { type: "string", minLength: 1, maxLength: 45 },
     },
-    required: ["name"],
+    required: ["url", "incident", "mimetype" ],
     additionalProperties: false
 };
 

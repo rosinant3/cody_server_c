@@ -10,7 +10,7 @@ const controllers:ISelectControllers = {
 
         const service:ISelectParams = Object.create(selectService);
               service.params = params;
-              service.context = context;
+              service.context = context; 
         const data = await service.run().
                         catch((error:Error)=>{
                             next(error.message);

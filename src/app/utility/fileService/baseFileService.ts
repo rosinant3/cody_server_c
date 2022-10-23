@@ -27,7 +27,7 @@ baseFileService.selectFile = async function(files: IFile[]) {
 
 baseFileService.createFileStream = function (filePath: string, flag: "a" | "w") {
     return fs.createWriteStream(filePath, { flags: flag });
-};
+}; 
  
 baseFileService.observeWriteStream = function (filePath:string, flag: "a" | "w"):Observable<string> {
 
@@ -38,7 +38,7 @@ baseFileService.observeWriteStream = function (filePath:string, flag: "a" | "w")
         });
         stream.end();
         stream.on('finish', () => {
-            observer.next(stream);
+            observer.next(filePath);
             observer.complete();
         });
     });

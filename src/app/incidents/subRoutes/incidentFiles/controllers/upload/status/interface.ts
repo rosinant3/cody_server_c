@@ -1,16 +1,13 @@
-import { IStatusParams } from '../../../service/upload/status/interface';
+import { IStatusParams  } from '../../../../../../utility/fileService/validation/statusValidationService/interface';
+import { ISizeObj  } from '../../../../../../utility/fileService/statusService/interface';
 import { TExpressFunction } from '../../../../../interface';
-import { IFile } from '../../../../../../utility/fileUploadService/interface';
 
 export interface IStatusRequest {
-    body: IStatusParams;
-    data: IStatusParams | any;
-    files: {
-        'files': IFile[]
-    };
+    query: IStatusParams;
+    data: ISizeObj;
     session: {
         context: string;
-    }
+    };
 };
 
 export interface IStatusResponse {

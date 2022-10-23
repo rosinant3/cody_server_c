@@ -8,12 +8,14 @@ const createService:ISelectService = Object.create(baseService);
 createService.schema = {
     type: "object",
     properties: {
-      case_: {type: "number" },
+      incident: {type: "number" },
       hook: {type: "string", minLength: 1, maxLength: 100 },
       currentPage: {type: "number" },
       perPage: {type: "number" },
+      uploaded: { type: "number"},
+      mimetype: { type: "string", minLength: 1, maxLength: 45 }
     },
-    required: ["case_", "hook", "currentPage", "perPage"],
+    required: ["incident", "hook", "currentPage", "perPage", "mimetype", "uploaded"],
     additionalProperties: false
 };
 
@@ -26,7 +28,7 @@ createService.validate = async function (params) {
 createService.execute = async function (params) {
   let pageCount: number | null = null;
   if (params.currentPage == 1) {
-    const count = await firstValueFrom(selectModel.count(params.case_));
+    const count = await firstValueFrom(selectModel.count({ incident: params.incident, type: params.mimetype }));
     pageCount = count.results ? count.results[0]['count(*)'] : 0;
   }
   const select = await firstValueFrom(selectModel.query(params));

@@ -10,26 +10,15 @@ type props = {
 };
 
 export interface ICreateParams {
-    content: string;
-    color: string;
-    caseId: number;
-    dateTime: string;
-    userId: number;
-    graphics: string
+    url: string;
+    incident: number;
+    mimetype: string;
 };
-
-export interface IIncidentParams {
-    content: string;
-    color: string;
-    caseId: number;
-    dateTime: string;
-    userId: number;
-    graphics?: string
-};
-
 
 export interface ICreateDataProps {
-    name: props;
+    url: props;
+    incident: props;
+    mimetype: props;
 };
 
 export interface ISchema {
@@ -47,9 +36,9 @@ export interface ICreateService extends IBaseService {
 };
 
 export interface ICreateParamsService extends ICreateService {
-    data: ICreateParams;
+    params: ICreateParams;
     context: string;
-}
+};
 
 export interface IValidationObject {
     schema: ISchema;

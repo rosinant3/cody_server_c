@@ -8,7 +8,6 @@ import uploadControllers from './upload/upload/uploadControllers';
 const incidentController: IIncidentController = {
     create: createControllers,
     select: selectControllers,
-
     upload: uploadControllers,
     uploadRequest: requestControllers,
     uploadStatus: statusControllers

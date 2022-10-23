@@ -19,7 +19,7 @@ const controllers:IUploadControllers = {
             name: ''
         }; 
         const info = {
-            busboy: busboy,
+            busboy: busboy, 
             type: 'incidents',
             fileId: req.headers['x-file-id'], 
             rawBody: req.rawBody

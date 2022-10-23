@@ -1,3 +1,3 @@
 export default {
-    create: 'INSERT INTO incident_media SET ?'
+    create: 'INSERT INTO incidents_media SET ?'
 };

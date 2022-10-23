@@ -1,10 +1,15 @@
-import { IRequestParams } from '../../../service/upload/request/interface';
 import { TExpressFunction } from '../../../../../interface';
 import { IFile, IFileNameObj} from '../../../../../../utility/fileService/interface';
 
+interface IRequestParams {
+
+
+};
+
 export interface IRequest {
     body: IFileNameObj; 
-    data: IRequestParams | any;
+    data: any;
+    context: string;
     rawBody: {},
     busboy: any;
     files: {
@@ -27,5 +32,6 @@ export interface IResponse {
 
 export interface IRequestControllers {
     create: TExpressFunction<IRequest, IResponse>;
+    save: TExpressFunction<IRequest, IResponse>;
     response: TExpressFunction<IRequest, IResponse>;
 };

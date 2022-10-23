@@ -6,6 +6,7 @@ import { IFileValidationService } from './validation/fileValidationService/inter
 export interface IFileObjectProps {
     name: props;
     mimetype: props;
+    url: props;
 };
 
 export interface ISchema {
@@ -15,7 +16,7 @@ export interface ISchema {
 };
 
 export interface IFileInfoObject {
-    id: number;
+    parentId: number;
     fileId: string;
     type: string;
     allowedFiles: string[];
@@ -26,20 +27,14 @@ export interface IFileInfoObject {
 
 export interface IFile {
     name: string;
-    data: any;
-    size: number;
-    encoding: string;
-    tempFilePath: string;
-    truncated: boolean;
     mimetype: string;
-    md5: string;
-    mv: any;
-    length: number;
+    url: string;
 };
 
 export interface IFileNameObj {
     name: string;
     mimetype: string; 
+    url: string;
 };
 
 export interface IFileObject { 
@@ -47,8 +42,12 @@ export interface IFileObject {
     info: IFileInfoObject 
 };
 
+export interface IMessageObject {
+    message: string;
+}
+
 export interface IBaseFileSrvice extends IAjvService {
-    run: () => Promise<IFileObject>;   
+    run: () => Promise<any>;   
     getFilePath: (fileObject: IFileObject) => string;
     createWriteStream: (filePath:string, flag: "a" | "w") => Observable<string>;
     observeWriteStream: (filePath:string, flag: "a" | "w") => any;
@@ -56,7 +55,7 @@ export interface IBaseFileSrvice extends IAjvService {
 };  
  
 export interface IFileUploadService extends IFileValidationService {
-    execute: (fileObject:IFileObject) => void;
+    execute: (fileObject:IFileObject) => Promise<IMessageObject>; 
 };
  
 export interface IFileUploadParams extends IFileUploadService {

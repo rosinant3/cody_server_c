@@ -6,15 +6,15 @@ const fs = require('fs');
 const busboyService:IBusboyService = Object.create(baseFileService);
 
 
-busboyService.observeBusboy = function() { 
+busboyService.observeBusboy = function(filePath:string) { 
 
      return new Observable(observer => { 
 
         this.busboy.on('file', async (_:any, file:any, info:{ filename: string; }) => {
 
-            this.fileObject.file.name = info.filename;
-            
-            const filePath = await this.getFilePath(this.fileObject);
+            //this.fileObject.file.name = info.filename;
+            //const filePath = await this.getFilePath(this.fileObject);
+
             const stats = await this.getFileDetails(filePath)
                                     .catch((e:Error)=>{
                                         observer.error('File not found.');

@@ -1,5 +1,5 @@
 import baseService from '../../../../../baseService';
-import { ICreateService, IIncidentParams } from './interface';
+import { ICreateService, ICreateParams } from './interface';
 import createModel from '../model/create/createModel';
 import { firstValueFrom } from 'rxjs'; 
 import schema from './schema';
@@ -13,16 +13,15 @@ createService.validate = async function (params) {
     const valid = await this.ajv.validate(this.schema, params);
     if (!valid) throw new Error(JSON.stringify(this.ajv.errors));
     return params;
+    
 }; 
  
-createService.execute = async function (params:IIncidentParams) {
+createService.execute = async function (params:ICreateParams) {
 
   const create = await firstValueFrom(createModel.query(params));
-  const fileId:number = create.insertId;
+  const insertId:number = create.insertId;
+  return insertId;
 
-  return {
-    fileId: fileId
-  };
 };
 
 export default createService;

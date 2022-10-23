@@ -8,7 +8,7 @@ const selectModel:ISelectModel = Object.create(dbService);
 
 selectModel.query = function (params) {
     return new Observable(observer => { 
-        this.con.query(sql.select, [ params.case_, params.hook, params.perPage ], 
+        this.con.query(sql.select, [ params.incident, params.uploaded, params.mimetype, params.hook, params.perPage ], 
             function (error:MysqlError, results:ICountResults[], fields:FieldInfo[]) {
               if (error) {
                 observer.error(error);
@@ -20,9 +20,9 @@ selectModel.query = function (params) {
     });
 };
 
-selectModel.count = function (case_) {
+selectModel.count = function (params) {
     return new Observable(observer => { 
-        this.con.query(sql.count, [ case_ ], 
+        this.con.query(sql.count, [ params.incident, params.type ], 
             function (error:MysqlError, results:ICountResults[] = [{ "count(*)": 0 }], fields:FieldInfo[]) {
               if (error) {
                 observer.error(error);

@@ -7,12 +7,12 @@ const requestService: IRequestService = Object.create(fileValidationService);
 requestService.execute = async function(fileObject) {
 
     const filePath = await this.getFilePath(fileObject);
-    await firstValueFrom(this.observeWriteStream(filePath, "w")) 
-    .catch((e:string)=>{
+    const filePath_ = await firstValueFrom(this.observeWriteStream(filePath, "w")) 
+    .catch((e:string)=>{ 
         console.log(e);
         throw new Error(e);
     });
-    return fileObject.info.fileId; 
+    return filePath_; 
 };
 
 export default requestService;
