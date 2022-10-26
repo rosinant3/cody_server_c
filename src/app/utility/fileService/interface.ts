@@ -2,6 +2,7 @@ import { props } from '../../interface';
 import { IAjvService } from '../../baseService';
 import { Observable } from 'rxjs';
 import { IFileValidationService } from './validation/fileValidationService/interface';
+import Stream from 'stream';
 
 export interface IFileObjectProps {
     name: props;
@@ -49,8 +50,10 @@ export interface IMessageObject {
 export interface IBaseFileSrvice extends IAjvService {
     run: () => Promise<any>;   
     getFilePath: (fileObject: IFileObject) => string;
-    createWriteStream: (filePath:string, flag: "a" | "w") => Observable<string>;
-    observeWriteStream: (filePath:string, flag: "a" | "w") => any;
+    createFileStream: (filePath:string, flag: "a" | "w" | "r") => Observable<string>;
+    getFileBufferFromReadStream: (filePath:string, flag: { start: number, end: number; }) => Observable<Buffer>;
+    getFileBuffer: (file: Stream) => Observable<Buffer>;
+    observeWriteStream: (filePath:string, flag: "a" | "w" | "r") => any;
     getFileDetails: (filePath:string) => Promise<any>;
 };  
  

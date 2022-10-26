@@ -15,40 +15,6 @@ export default {
                 graphics.idincident_graphics as idincident_graphics
             FROM 
                 incident 
-            LEFT JOIN 
-                incidentmedia as images
-            ON 
-                (images.incident = incident.idincident) AND images.position = (
-                    Select Min(incidentmedia.position)
-                    From incidentmedia
-                    Where incidentmedia.incident = incident.idincident AND type = 'image'
-                )
-            LEFT JOIN 
-                user
-            ON 
-                (user.iduser = incident.user)
-            LEFT JOIN 
-                incidentmedia as pdfs
-            ON 
-                (pdfs.incident = incident.idincident) AND pdfs.idincidentmedia = (
-                Select Min(incidentmedia.idincidentmedia)
-                From incidentmedia
-                Where incidentmedia.incident = incident.idincident AND type = 'pdf')
-            LEFT JOIN 
-                incidentmedia as videos
-            ON 
-                (videos.incident = incident.idincident) AND videos.idincidentmedia = (
-                Select Min(incidentmedia.idincidentmedia)
-                From incidentmedia
-                Where incidentmedia.incident = incident.idincident AND type = 'video'
-                )
-            LEFT JOIN 
-                incident_graphics as graphics
-            ON 
-                (graphics.incident = incident.idincident) AND graphics.idincident_graphics = (
-                Select Min(incident_graphics.idincident_graphics)
-                From incident_graphics
-                Where incident_graphics.incident = incident.idincident)
             WHERE 
                 case_ = ?
             AND 

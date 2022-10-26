@@ -2,7 +2,6 @@ import { IUploadControllers } from './interface';
 import fileUploadService from '../../../../../../utility/fileService/uploadService/fileUploadService';
 import { IRequestParams } from '../../../../../../utility/fileService/uploadService/interface';
 const Busboy = require('busboy');
-import { Observable, firstValueFrom } from 'rxjs';
 
 const controllers:IUploadControllers = {
     create: async function (req, res, next) {

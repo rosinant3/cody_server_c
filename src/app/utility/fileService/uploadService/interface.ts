@@ -23,7 +23,7 @@ export interface IFileObject {
 export interface IBaseFileSrvice extends IAjvService {
     run: () => Promise<IFileObject>;   
     getFilePath: (fileObject: IFileObject) => string;
-    createWriteStream: (filePath:string, flag: "a" | "w") => Observable<string>;
+    createWriteStream: (filePath:string, flag: "a" | "w" | "r") => Observable<string>;
     getFileDetails: (filePath:string) => Promise<any>;
 }; 
 

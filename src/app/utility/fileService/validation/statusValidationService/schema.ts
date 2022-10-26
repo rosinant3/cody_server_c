@@ -8,4 +8,3 @@ export const schema:IFilePathSchema = {
     required: [ "filePath" ],
     additionalProperties: true
 }; 
-

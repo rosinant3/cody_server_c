@@ -2,11 +2,11 @@ import { props } from '../../../../interface';
 import { IBaseFileSrvice, ISchema } from '../../interface';
 
 export interface IStatusParams {
-    filePath: string;   
+    filePath: string;  
 };
 
 export interface IInfoObjectProps {
-    filePath: props;
+    busboy: props;
 };
 
 export interface IFilePathSchema extends ISchema {
@@ -16,6 +16,6 @@ export interface IFilePathSchema extends ISchema {
 };
 
 export interface IStatusValidationService extends IBaseFileSrvice {
-    validate: (params: IStatusParams) => Promise<IStatusParams>;
+    validate: (params: IStatusParams, info: IInfoObjectProps) => Promise<{ params: IStatusParams, info: IInfoObjectProps }>;
     schema: ISchema; 
 };

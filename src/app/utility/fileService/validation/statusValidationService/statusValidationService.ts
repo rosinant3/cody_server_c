@@ -7,11 +7,11 @@ const statusValidationService:IStatusValidationService = Object.create(baseServi
 
 statusValidationService.schema = schema;
 
-statusValidationService.validate = async function(params) {
+statusValidationService.validate = async function(params, info) {
      
     const valid = await this.ajv.validate(this.schema, params);
     if (!valid) throw new Error(this.ajv.errors);
-    return params;
+    return { params, info };
     
 };
 

@@ -1,5 +1,5 @@
 import { Observable } from 'rxjs';
-import { IFileObject } from '../interface';
+import { IFileObject } from '../uploadService/interface';
 import { IBaseFileSrvice } from '../interface';
 
 export interface IBaseBusboy {
@@ -10,4 +10,5 @@ export interface IBusboyService extends IBaseFileSrvice {
     fileObject: IFileObject;  
     busboy: any;
     observeBusboy: (rawBody:any) =>  Observable<{ message: string; }>;
+    observeFileEquality: (rawBody:any) =>  Observable<{ message: string; }>;
 };

@@ -3,12 +3,20 @@ import { ISizeObj  } from '../../../../../../utility/fileService/statusService/i
 import { TExpressFunction } from '../../../../../interface';
 
 export interface IStatusRequest {
-    query: IStatusParams;
     data: ISizeObj;
     session: {
         context: string;
     };
-};
+    body: IStatusParams; 
+    rawBody: {},
+    busboy: any;
+    files: {};
+    pipe: any;
+    headers: {
+        'content-range': string;
+        'x-file-id': string;
+    };
+}; 
 
 export interface IStatusResponse {
     send: any;
@@ -16,6 +24,6 @@ export interface IStatusResponse {
 };
 
 export interface IStatusControllers {
-    create: TExpressFunction<IStatusRequest, IStatusResponse>;
+    status: TExpressFunction<IStatusRequest, IStatusResponse>;
     response: TExpressFunction<IStatusRequest, IStatusResponse>;
 };

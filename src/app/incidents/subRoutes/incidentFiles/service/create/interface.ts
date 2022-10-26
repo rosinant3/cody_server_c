@@ -13,12 +13,16 @@ export interface ICreateParams {
     url: string;
     incident: number;
     mimetype: string;
+    lastModified: number;
+    size: number;
 };
 
 export interface ICreateDataProps {
     url: props;
     incident: props;
     mimetype: props;
+    lastModified: props;
+    size: props;
 };
 
 export interface ISchema {

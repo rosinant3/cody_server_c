@@ -1,8 +1,8 @@
 import { IFileUploadService } from './interface';
 import fileUploadValidationService from "../validation/uploadValidationService/uploadValidationService";
-import busboyService from './busboyService/busboyService';
+import busboyService from '../busboyService/busboyService';
 import { firstValueFrom } from 'rxjs';
-import { IBusboyService } from './busboyService/interfaces';
+import { IBusboyService } from '../busboyService/interfaces';
 
 
 const fileUploadService:IFileUploadService = Object.create(fileUploadValidationService);
