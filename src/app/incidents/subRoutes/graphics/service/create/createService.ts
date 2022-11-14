@@ -22,8 +22,8 @@ createService.schema = {
 createService.validate = async function (params) {
     const valid = await this.ajv.validate(this.schema, params);
     if (!valid) throw new Error(JSON.stringify(this.ajv.errors));
-    const emailValid = await duplicateEmailService.run(params.email); // why is this here?
-    const nameValid = await duplicateNameService.run(params.name); // why is this here?
+    //const emailValid = await duplicateEmailService.run(params.email); // why is this here?
+    //const nameValid = await duplicateNameService.run(params.name); // why is this here?
     return params;
 };
 

@@ -11,6 +11,11 @@ export interface IdbService {
 
 export type props = { 
     type: string;
+    errorMessage?: {
+        type: string;
+        missingProperty: string;
+        required: string;
+    };
     minLength?: number;
     maxLength?: number;
     maxItems?: number; 

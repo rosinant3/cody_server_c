@@ -1,5 +1,11 @@
+import addFormats from 'ajv-formats';
+import ajvErrors from 'ajv-errors';
 const Ajv = require("ajv");
-const ajv = new Ajv({ allErrors: true, coerceTypes: true, strictTuples: false });
+const ajv = new Ajv({ allErrors: true, $data: true, coerceTypes: true, strictTuples: false });
+
+addFormats(ajv);
+ajvErrors(ajv);
+
 
 export interface IAjvService {
     ajv: typeof Ajv;

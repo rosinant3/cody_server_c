@@ -8,8 +8,8 @@ const app = server.app;
 const incidentRoutes:IRoutes = {
     create: () => {
 
-        app.post('/incidents/create', incidents.create);
-        app.get('/incidents/select', incidents.select);
+        app.post('/api/incidents/create', incidents.create);
+        app.get('/api/incidents/select', incidents.select);
 
         incidentFilesRoutes.create();
     }
