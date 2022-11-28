@@ -1,6 +1,6 @@
 import { IUploadControllers } from './interface';
-import fileUploadService from '../../../../../../utility/fileService/uploadService/fileUploadService';
-import { IRequestParams } from '../../../../../../utility/fileService/uploadService/interface';
+import fileUploadService from '../../../../../../ralphs/fileService/uploadService/fileUploadService';
+import { IRequestParams } from '../../../../../../ralphs/fileService/uploadService/interface';
 const Busboy = require('busboy');
 
 const controllers:IUploadControllers = {

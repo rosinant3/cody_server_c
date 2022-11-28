@@ -17,8 +17,7 @@ fileValidationService.validate = async function(files, info) {
     if (!validInfo) throw new Error(this.ajv.errors);
     const validFile = await this.ajv.validate(this.schemas.file, file);
     if (!validFile) throw new Error(this.ajv.errors);
-    const valid = await this.validateFileExtension(file, info); 
-    if (!valid) throw new Error('Invalid file type.');
+    await this.validateFileExtension(file, info); 
 
     return { file: file, info: info };
 };
@@ -31,7 +30,7 @@ fileValidationService.validateFileExtension = async function(file, info) {
     );
     const extensionAllowed = await info.allowedFiles.includes(file_extension);
     const extensionAllowedMime = await info.allowedFileTypes.includes(file.mimetype);
-    return extensionAllowed && extensionAllowedMime;
+    if (!(extensionAllowed && extensionAllowedMime)) throw new Error('Invalid file type.');
 };
 
 export default fileValidationService;

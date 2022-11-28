@@ -1,20 +1,26 @@
 import { IBaseService } from '../../../baseService';
+import { ICreateModel } from '../model/create/interface';
+import { ICrypt } from '../../../ralphs/crypt/interfaces';
+import { ICountByUsernameModel } from '../model/countUserByUsername/interface';
+import { ICountByEmailModel } from '../model/countUserByEmail/interface';
+const Joi = require('joi');
 
 type porps = { 
-        type: string;
-        minLength?: number;
-        maxLength?: number;
-        maxItems?: number; 
-        minItems?: number; 
+    type: string;
+    minLength?: number;
+    maxLength?: number;
+    maxItems?: number; 
+    minItems?: number; 
 };
 
 export interface ICreateParams {
-    content: string;
-    color: string;
-    id: number;
-    dateTime: string;
-    iduser: number;
-    graphics: string
+    firstName: string;
+    lastName: string;
+    username: string;
+    password: string;
+    email: string;
+    userId?:number;
+    repeatPassword?: string;
 };
 
 export interface ICreateDataProps {
@@ -25,17 +31,27 @@ export interface ICreateDataProps {
     password2: porps;
 };
 
-interface ISchema {
-    type: string;
-    properties: ICreateDataProps;
-    required: any[];
-    additionalProperties: boolean;
+interface ICreateModel_ {
+    createModel: ICreateModel,
+    countByUsernameModel: ICountByUsernameModel,
+    countByEmailModel: ICountByEmailModel
 };
+
+export interface IValidators {
+    schemaValidator: (prarams:ICreateParams) => Promise<ICreateParams>;
+    validateDuplicateUsername: (username:string) => Promise<boolean>;
+    validateDuplicateEmail: (email:string) => Promise<boolean>;
+    model: ICreateModel_;
+    schema: typeof Joi;
+};
+
 
 export interface ICreateService extends IBaseService {
     validate: (params :ICreateParams) => any;
     execute: (params: ICreateParams) => any;
-    schema: ISchema;
+    crypt: ICrypt;
+    validators: IValidators; 
+    model: ICreateModel_;
 };
 
 export interface ICreateParams extends ICreateService {
@@ -44,6 +60,6 @@ export interface ICreateParams extends ICreateService {
 }
 
 export interface IValidationObject {
-    schema: ISchema;
+    schema: typeof Joi;
     data: any;
 };

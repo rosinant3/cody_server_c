@@ -1,6 +1,6 @@
 import { IStatusControllers } from './interface';
-import { IStatusParams } from '../../../../../../utility/fileService/statusService/interface';
-import statusService from '../../../../../../utility/fileService/statusService/statusService';
+import { IStatusParams } from '../../../../../../ralphs/fileService/statusService/interface';
+import statusService from '../../../../../../ralphs/fileService/statusService/statusService';
 const Busboy = require('busboy');
 
 const controllers:IStatusControllers = {

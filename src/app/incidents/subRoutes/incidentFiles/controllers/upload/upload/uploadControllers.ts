@@ -1,6 +1,6 @@
 import { IUploadControllers } from './interface';
-import fileUploadService from '../../../../../../utility/fileService/uploadService/fileUploadService';
-import { IRequestParams } from '../../../../../../utility/fileService/uploadService/interface';
+import fileUploadService from '../../../../../../ralphs/fileService/uploadService/fileUploadService';
+import { IRequestParams } from '../../../../../../ralphs/fileService/uploadService/interface';
 const Busboy = require('busboy');
 
 const controllers:IUploadControllers = {
@@ -28,13 +28,16 @@ const controllers:IUploadControllers = {
               service.files = [ file ];
               service.info = info; 
         
-        const data = await service.run().
-                            catch((error:Error)=>{
-                                next(error.message);
-                            });
-        
-        //req.data = data;
-        next();
+        try {
+
+            const data = await service.run();
+            //req.data = data;
+            next();
+            
+        } catch (e:any) {
+            next(e.message);
+        }
+
     },
     response: function (req, res, next) {
         res.send(req.data);

@@ -3,11 +3,11 @@ import user from './controllers/controllers';
 import { IRoutes } from '../interface';
 const app = server.app;
 
-const incidentRoutes:IRoutes = {
+const usersRoutes:IRoutes = {
     create: () => {
-        app.post('/user/register', user.create);
-        app.get('/user/login', user.select);
+        app.post('/api/users/register', user.create);
+        app.get('/api/users/login', user.select);
     }
 };
 
-export default incidentRoutes;
+export default usersRoutes;

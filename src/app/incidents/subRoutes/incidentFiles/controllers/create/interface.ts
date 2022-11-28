@@ -1,6 +1,6 @@
 import { ICreateParams } from '../../service/create/interface';
 import { TExpressFunction } from '../../../../interface';
-import { IFile } from '../../../../../utility/fileService/interface';
+import { IFile } from '../../../../../ralphs/fileService/interface';
 
 export interface ICreateRequest {
     body: ICreateParams;

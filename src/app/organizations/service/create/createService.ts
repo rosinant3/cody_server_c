@@ -14,7 +14,7 @@ createService.schema = {
       email: {type: "email", minLength: 1, maxLength: 250 }, 
       password1: {type: "string", minLength: 7 },
       password2: {type: "string", minLength: 7 }, 
-    },
+    }, 
     required: [ "name", "email", "password1", "password2" ],
     additionalProperties: false
 };

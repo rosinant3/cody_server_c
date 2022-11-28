@@ -1,8 +1,8 @@
 import { v4 as uuidv4 } from 'uuid';
 import { IRequestControllers } from './interface';
-import requestService from '../../../../../../utility/fileService/requestService/requestService';
-import { IRequestParams } from '../../../../../../utility/fileService/requestService/interface';
-import allowedFiles from '../../../../../../utility/fileService/allowedFiles/allowedFiles';
+import requestService from '../../../../../../ralphs/fileService/requestService/requestService';
+import { IRequestParams } from '../../../../../../ralphs/fileService/requestService/interface';
+import allowedFiles from '../../../../../../ralphs/fileService/allowedFiles/allowedFiles';
 import createService from '../../../service/create/createService';
 import { ICreateParamsService } from '../../../service/create/interface';
  
@@ -23,19 +23,22 @@ const controllers:IRequestControllers = {
               service.files = file; 
               service.context = context; 
               service.info = info;
-        const url = await service.run(). 
-                        catch((error:Error)=>{
-                            next(error.message);
-                        });
 
-        req.data = {
-            url: `${file[0].url} ${url}`,
-            incident: info.parentId,
-            mimetype: file[0].mimetype
-        };
-        req.context = context;
+        try {
 
-        next();
+            const url = await service.run();
+            req.data = {
+                url: `${file[0].url} ${url}`,
+                incident: info.parentId,
+                mimetype: file[0].mimetype
+            };
+            req.context = context;
+            next();
+
+        } catch (e:any) {
+            next(e.message);
+        }
+
     },
     save: async function (req, res, next) {
 

@@ -1,5 +1,5 @@
-import { IStatusParams  } from '../../../../../../utility/fileService/validation/statusValidationService/interface';
-import { ISizeObj  } from '../../../../../../utility/fileService/statusService/interface';
+import { IStatusParams  } from '../../../../../../ralphs/fileService/validation/statusValidationService/interface';
+import { ISizeObj  } from '../../../../../../ralphs/fileService/statusService/interface';
 import { TExpressFunction } from '../../../../../interface';
 
 export interface IStatusRequest {

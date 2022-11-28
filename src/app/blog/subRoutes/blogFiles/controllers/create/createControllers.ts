@@ -1,7 +1,7 @@
 import { ICreateControllers } from './interface';
-import fileUploadService from '../../../../../utility/fileService/uploadService/fileUploadService';
-import { IFileUploadParams } from '../../../../../utility/fileService/interface';
-import allowedFiles from '../../../../../utility/fileService/allowedFiles/allowedFiles';
+import fileUploadService from '../../../../../ralphs/fileService/uploadService/fileUploadService';
+import { IFileUploadParams } from '../../../../../ralphs/fileService/interface';
+import allowedFiles from '../../../../../ralphs/fileService/allowedFiles/allowedFiles';
 
 const info = {
     id: 5,

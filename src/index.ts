@@ -11,10 +11,10 @@ const startCody = () => {
     
     accessControl.initialize();
     parsers.initialize();
-    session.initialize();
     fileUpload.initialize();
     socket.connect();
     server.run();
+    session.initialize();
     appRoutes.create();
     parsers.errorHandlerInit();
 };

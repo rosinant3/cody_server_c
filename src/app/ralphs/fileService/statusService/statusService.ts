@@ -12,15 +12,8 @@ requestService.execute = async function({ info, params }) {
     const busboy = info.busboy;
     const service:IBusboyService = Object.create(busboyService);
           service.busboy = busboy; 
-          await firstValueFrom(service.observeFileEquality(filePath))
-                            .catch((e:string)=>{ 
-                                throw new Error(e);
-                            });
-
-    const stats = await this.getFileDetails(filePath)
-        .catch((err:Error) => {
-            throw new Error('File is missing.');
-        }); 
+          await firstValueFrom(service.observeFileEquality(filePath));
+    const stats = await this.getFileDetails(filePath);
     
     return { size: stats.size }; 
 };

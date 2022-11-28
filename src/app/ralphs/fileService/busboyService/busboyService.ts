@@ -49,14 +49,8 @@ busboyService.observeFileEquality = function(filePath:string) {
 
        this.busboy.on('file', async (_:any, file:any, info:{ filename: string; }) => {
 
-            const buffer1:Buffer | any = await firstValueFrom(this.getFileBufferFromReadStream(filePath, { start: 1, end: 256000 }))
-                                        .catch((e:string)=>{ 
-                                            throw new Error(e);
-                                        });
-            const buffer2:Buffer | any = await firstValueFrom(this.getFileBuffer(file))
-                    .catch((e:string)=>{ 
-                        throw new Error(e);
-                    });
+            const buffer1:Buffer | any = await firstValueFrom(this.getFileBufferFromReadStream(filePath, { start: 1, end: 256000 }));
+            const buffer2:Buffer | any = await firstValueFrom(this.getFileBuffer(file));
 
             const fileSame = buffer1.equals(buffer2);
 

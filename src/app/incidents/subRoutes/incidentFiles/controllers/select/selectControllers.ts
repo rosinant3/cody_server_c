@@ -11,13 +11,17 @@ const controllers:ISelectControllers = {
         const service:ISelectParams = Object.create(selectService);
               service.params = params;
               service.context = context; 
-        const data = await service.run().
-                        catch((error:Error)=>{
-                            next(error.message);
-                        });
+        
+        try {
 
-        req.data = data;
-        next();
+            const data = await service.run();
+            req.data = data;
+            next();
+            
+        } catch (e:any) {
+            next(e.message);
+        }
+
     },
     response: function (req, res, next) {
         res.send(req.data);

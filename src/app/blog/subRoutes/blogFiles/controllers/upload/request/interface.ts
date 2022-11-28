@@ -1,5 +1,5 @@
 import { TExpressFunction } from '../../../../../interface';
-import { IFile, IFileNameObj} from '../../../../../../utility/fileService/interface';
+import { IFile, IFileNameObj} from '../../../../../../ralphs/fileService/interface';
 
 interface IRequestParams {
 

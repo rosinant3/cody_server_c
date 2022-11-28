@@ -1,8 +1,8 @@
 import { v4 as uuidv4 } from 'uuid';
 import { IRequestControllers } from './interface';
-import requestService from '../../../../../../utility/fileService/requestService/requestService';
-import { IRequestParams } from '../../../../../../utility/fileService/requestService/interface';
-import allowedFiles from '../../../../../../utility/fileService/allowedFiles/allowedFiles';
+import requestService from '../../../../../../ralphs/fileService/requestService/requestService';
+import { IRequestParams } from '../../../../../../ralphs/fileService/requestService/interface';
+import allowedFiles from '../../../../../../ralphs/fileService/allowedFiles/allowedFiles';
 import createService from '../../../service/create/createService';
 import { ICreateParamsService } from '../../../service/create/interface';
  

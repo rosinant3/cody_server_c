@@ -1,11 +1,11 @@
 import { ConnectionConfig } from 'mysql';
 
 const options:ConnectionConfig = {
-	host: 'localhost',
+	host: '127.0.0.1',
 	port: 3306,
 	user: 'root',
-	password: '',
-	database: 'holmes'
+	password: 'password',
+	database: 'spectrum'
 };
 
 export default options;

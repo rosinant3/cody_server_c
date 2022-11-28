@@ -10,7 +10,7 @@ createModel.query = function (params) {
     return new Observable(observer => { 
         this.con.query(sql.create, [ params.title, params.userId, params.url ], function (error:MysqlError, results: IInsertResults, fields:FieldInfo[]) {
             if (error) {
-                observer.error(Error('Server Error'));
+                observer.error(Error('Server Error.'));
             } else { 
                 observer.next({ insertId: results.insertId, fields });
             }

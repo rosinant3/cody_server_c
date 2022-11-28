@@ -30,7 +30,7 @@ export interface IFileValidationService extends IBaseFileSrvice {
     allowedFileTypes: string[];
     validate: (files: IFile[], info:IFileInfoObject) => Promise<IFileObject>;
     selectFile: (files: IFile[]) => Promise<IFile>;
-    validateFileExtension: (file: IFile, info: IFileInfoObject) => Promise<boolean>;
+    validateFileExtension: (file: IFile, info: IFileInfoObject) => void;
  
     schemas: {
         info: IInfoSchema;

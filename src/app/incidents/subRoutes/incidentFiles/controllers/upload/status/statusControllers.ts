@@ -1,6 +1,6 @@
 import { IStatusControllers } from './interface';
-import { IStatusParams } from '../../../../../../utility/fileService/statusService/interface';
-import statusService from '../../../../../../utility/fileService/statusService/statusService';
+import { IStatusParams } from '../../../../../../ralphs/fileService/statusService/interface';
+import statusService from '../../../../../../ralphs/fileService/statusService/statusService';
 const Busboy = require('busboy');
 
 const controllers:IStatusControllers = {
@@ -21,12 +21,17 @@ const controllers:IStatusControllers = {
                 busboy: busboy
               };
 
-        const data = await service.run(). 
-              catch((error:Error)=>{
-                  next(error.message);
-              });
-        req.data = data;
-        next(); 
+        try {
+
+            const data = await service.run();
+            req.data = data;
+            next(); 
+
+        } catch (e:any) {
+            next(e.message);
+        }
+
+
     },
     response: function (req, res, next) {
         res.send(req.data);

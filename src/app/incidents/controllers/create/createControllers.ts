@@ -10,12 +10,21 @@ const controllers:ICreateControllers = {
         const service:ICreateParamsService = Object.create(createService);
               service.params = params; 
               service.context = context;
-        const data = await service.run().
-                        catch((error:Error)=>{
-                            next(error.message);
-                        });
-        req.data = data;
-        next();
+        
+        try {
+            
+            const data = await service.run().
+            catch((error:Error)=>{
+                next(error.message);
+            });
+            req.data = data;
+
+        } catch (e:any) {
+            next(e.message);
+        }
+
+ 
+
     },
     response: function (req, res, next) {
         res.send(req.data);
