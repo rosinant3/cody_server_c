@@ -1,5 +1,6 @@
 import dbService from "../../../../dbService";
-import { ICreateModel, IInsertResults } from './interface';
+import { ICreateModel } from './interface';
+import { IInsertResults } from '../../../../interface';
 import { Observable } from 'rxjs';
 import { FieldInfo, MysqlError } from 'mysql';
 import sql from './sql';

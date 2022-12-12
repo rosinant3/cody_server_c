@@ -6,7 +6,3 @@ import { FieldInfo } from 'mysql';
 export interface ICreateModel extends IdbService {
     query: (params: ICreateParams) => Observable<{insertId: number, fields?: FieldInfo[]}>;
 };
-
-export interface IInsertResults {
-    insertId: number;
-};

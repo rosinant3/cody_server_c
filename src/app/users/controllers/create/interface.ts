@@ -1,13 +1,11 @@
 import { ICreateParams } from '../../service/create/createInterface';
 import { TExpressFunction } from '../../interface';
+import { SessionInterface } from '../../../interface';
 
 export interface ICreateRequest {
     body: ICreateParams;
     data: ICreateParams | any;
-    session: {
-        userId: number;
-        userType: 'user' | 'ogranization';
-    }
+    session: SessionInterface;
 }
 
 export interface ICreateResponse {

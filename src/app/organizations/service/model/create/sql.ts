@@ -1,5 +1,5 @@
 
 
 export default {
-    create: 'INSERT INTO ogranizations SET ?'
+    create: 'INSERT INTO organizations SET ?'
 };
